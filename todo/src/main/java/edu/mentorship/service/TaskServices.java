@@ -1,7 +1,11 @@
 package edu.mentorship.service;
 
+import edu.mentorship.helpClasses.DateValidation;
+
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static edu.mentorship.helpClasses.DateValidation.indexValid;
 import static edu.mentorship.helpClasses.PrintTasks.printTasks;
@@ -24,7 +28,8 @@ public  class TaskServices {
         System.out.println("\ncan't add task ");
         notCompleted--;
     }
-    public void update(int index, Task newTask) {
+
+        public void update(int index,String title, String description ,String startDate,String endDate) {
         if(!indexValid(index, tasks))
         {
             System.out.println("can't update task("+index+")");
@@ -32,19 +37,18 @@ public  class TaskServices {
         }
         Task existingTask = tasks.get(index);
 
-        if (newTask.title != null && !newTask.title.isEmpty()) {
-            existingTask.title = newTask.title;
+        if (title != null && !title.isEmpty()) {
+            tasks.get(index).setTitle(title);
         }
-        if (newTask.description != null && !newTask.description.isEmpty()) {
-            existingTask.description = newTask.description;
+        if (description != null && !description.isEmpty()) {
+            tasks.get(index).setDescription(description);
         }
-        if (existingTask.startDate != null) {
-            existingTask.startDate = newTask.startDate;
-        }
-        if (existingTask.endDate != null) {
-            existingTask.endDate = newTask.endDate;
-        }
-
+            if (existingTask.startDate != null) {
+                tasks.get(index).setStartDate(startDate);
+            }
+            if (existingTask.endDate != null) {
+                tasks.get(index).setEndtDate(endDate);
+            }
         System.out.println("Task at index " + index + " updated successfully.");
     }
     public void delete(int index) {
