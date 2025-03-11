@@ -9,12 +9,12 @@ import java.util.ArrayList;
 public final class DateValidation {
     static boolean valid = false;
     static LocalDate date;
-    public static boolean isValid(String s) {
+    public static boolean isValid(String date) {
         try {
 
-            date = LocalDate.parse(s, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            DateValidation.date = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-            if (!date.isBefore(LocalDate.now())) {
+            if (!DateValidation.date.isBefore(LocalDate.now())) {
                 valid = true;
             } else {
                 valid = false;

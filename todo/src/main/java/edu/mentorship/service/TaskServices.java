@@ -17,6 +17,8 @@ public  class TaskServices {
         if (task != null) {
             tasks.add(task);
             System.out.println("\nTask: "+ task.title+" added successfully.");
+            allTasks++;
+            notCompleted++;
             return;
         }
         System.out.println("\ncan't add task ");
@@ -51,13 +53,13 @@ public  class TaskServices {
             System.out.println("can't remove task("+index+")");
             return;
         }
-        tasks.remove(index);
         // TODO: check for status
         if(!tasks.get(index).status)
             notCompleted--;
         else
             completed--;
         allTasks--;
+        tasks.remove(index);
     }
     public void repeat(int index, int times) {
         if (tasks == null || !indexValid(index, tasks)) {

@@ -45,6 +45,7 @@ public class Simple extends Task {
         }
         else
         {
+            System.out.println("date is notValid start date will be today.");
             this.startDate = LocalDate.now();
         }
     }

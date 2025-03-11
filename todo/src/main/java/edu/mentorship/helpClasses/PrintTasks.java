@@ -8,9 +8,16 @@ import static edu.mentorship.helpClasses.Sort.sortTasks;
 public final class PrintTasks {
 
     public static void printTasks(ArrayList<Task> arr) {
+        if(arr.isEmpty())
+        {
+            System.out.println("List is empty!");
+            return;
+        }
+
         sortTasks(arr);
         for (Task task : arr) {
             System.out.println(arr.indexOf(task)+".  "+task.toString());
         }
+
     }
 }
